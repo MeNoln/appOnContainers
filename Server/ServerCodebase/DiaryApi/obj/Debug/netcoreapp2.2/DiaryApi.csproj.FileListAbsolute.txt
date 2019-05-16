@@ -1,0 +1,14 @@
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\bin\Debug\netcoreapp2.2\DiaryApi.deps.json
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\bin\Debug\netcoreapp2.2\DiaryApi.runtimeconfig.json
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\bin\Debug\netcoreapp2.2\DiaryApi.runtimeconfig.dev.json
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\bin\Debug\netcoreapp2.2\DiaryApi.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.RazorAssemblyInfo.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.RazorAssemblyInfo.cs
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.AssemblyInfo.cs
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.RazorTargetAssemblyInfo.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\bin\Debug\netcoreapp2.2\DiaryApi.pdb
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi\obj\Debug\netcoreapp2.2\DiaryApi.pdb

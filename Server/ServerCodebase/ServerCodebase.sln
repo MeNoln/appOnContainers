@@ -7,11 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{B82E8F73-54B5-451D-866B-E3CFC5B8DA13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotGateway", "OcelotGateway\OcelotGateway.csproj", "{563C027B-A164-40E9-9A4D-85C3C2749AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotGateway", "OcelotGateway\OcelotGateway.csproj", "{563C027B-A164-40E9-9A4D-85C3C2749AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiaryApi", "DiaryApi\DiaryApi.csproj", "{8699C460-96C3-4ECD-B835-542F0A8CA1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiaryApi", "DiaryApi\DiaryApi.csproj", "{8699C460-96C3-4ECD-B835-542F0A8CA1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoListApi", "TodoListApi\TodoListApi.csproj", "{52C1D5DF-B4D1-44F1-8AB0-421600FC2483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoListApi", "TodoListApi\TodoListApi.csproj", "{52C1D5DF-B4D1-44F1-8AB0-421600FC2483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTests", "xUnitTests\xUnitTests.csproj", "{ADAC9534-56C1-4C89-AA18-53599448E27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{52C1D5DF-B4D1-44F1-8AB0-421600FC2483}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52C1D5DF-B4D1-44F1-8AB0-421600FC2483}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52C1D5DF-B4D1-44F1-8AB0-421600FC2483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADAC9534-56C1-4C89-AA18-53599448E27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADAC9534-56C1-4C89-AA18-53599448E27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADAC9534-56C1-4C89-AA18-53599448E27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADAC9534-56C1-4C89-AA18-53599448E27F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

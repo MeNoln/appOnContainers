@@ -1,0 +1,14 @@
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\bin\Debug\netcoreapp2.2\OcelotGateway.deps.json
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\bin\Debug\netcoreapp2.2\OcelotGateway.runtimeconfig.json
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\bin\Debug\netcoreapp2.2\OcelotGateway.runtimeconfig.dev.json
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\bin\Debug\netcoreapp2.2\OcelotGateway.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\bin\Debug\netcoreapp2.2\OcelotGateway.pdb
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.RazorAssemblyInfo.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.RazorAssemblyInfo.cs
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.AssemblyInfo.cs
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.RazorTargetAssemblyInfo.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway\obj\Debug\netcoreapp2.2\OcelotGateway.pdb
