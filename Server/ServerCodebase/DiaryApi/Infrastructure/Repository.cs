@@ -36,10 +36,8 @@ namespace DiaryApi.Infrastructure
         {
             var model = db.Diaries.FirstOrDefault(i => i.Id == id);
             if(model != null)
-            {
                 db.Diaries.Remove(model);
-                db.SaveChanges();
-            }
+            db.SaveChanges();
         }
     }
 }
