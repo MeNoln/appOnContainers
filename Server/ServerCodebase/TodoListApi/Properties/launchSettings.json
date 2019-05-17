@@ -4,7 +4,7 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:53643",
+      "applicationUrl": "http://localhost:7200",
       "sslPort": 0
     }
   },
@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/todo",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,8 +20,8 @@
     "TodoListApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
-      "applicationUrl": "http://localhost:5000",
+      "launchUrl": "api/todo",
+      "applicationUrl": "http://localhost:7200",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
