@@ -3477,6 +3477,20 @@
         "runtime": {
           "bin/placeholder/DiaryApi.dll": {}
         }
+      },
+      "TodoListApi/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3"
+        },
+        "compile": {
+          "bin/placeholder/TodoListApi.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TodoListApi.dll": {}
+        }
       }
     }
   },
@@ -10677,6 +10691,11 @@
       "type": "project",
       "path": "../DiaryApi/DiaryApi.csproj",
       "msbuildProject": "../DiaryApi/DiaryApi.csproj"
+    },
+    "TodoListApi/1.0.0": {
+      "type": "project",
+      "path": "../TodoListApi/TodoListApi.csproj",
+      "msbuildProject": "../TodoListApi/TodoListApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10686,6 +10705,7 @@
       "Microsoft.NET.Test.Sdk >= 16.0.1",
       "Microsoft.NETCore.App >= 2.2.0",
       "Moq >= 4.10.1",
+      "TodoListApi >= 1.0.0",
       "xunit >= 2.4.0",
       "xunit.runner.visualstudio >= 2.4.0"
     ]
@@ -10722,6 +10742,9 @@
           "projectReferences": {
             "C:\\Users\\PC\\Desktop\\appOnContainers\\appOnContainers\\Server\\ServerCodebase\\DiaryApi\\DiaryApi.csproj": {
               "projectPath": "C:\\Users\\PC\\Desktop\\appOnContainers\\appOnContainers\\Server\\ServerCodebase\\DiaryApi\\DiaryApi.csproj"
+            },
+            "C:\\Users\\PC\\Desktop\\appOnContainers\\appOnContainers\\Server\\ServerCodebase\\TodoListApi\\TodoListApi.csproj": {
+              "projectPath": "C:\\Users\\PC\\Desktop\\appOnContainers\\appOnContainers\\Server\\ServerCodebase\\TodoListApi\\TodoListApi.csproj"
             }
           }
         }

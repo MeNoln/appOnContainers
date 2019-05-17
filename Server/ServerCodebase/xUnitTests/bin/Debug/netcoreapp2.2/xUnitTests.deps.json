@@ -12,6 +12,7 @@
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
           "Microsoft.NET.Test.Sdk": "16.0.1",
           "Moq": "4.10.1",
+          "TodoListApi": "1.0.0",
           "xunit": "2.4.0",
           "xunit.runner.visualstudio": "2.4.0"
         },
@@ -2548,6 +2549,15 @@
         "runtime": {
           "DiaryApi.dll": {}
         }
+      },
+      "TodoListApi/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3"
+        },
+        "runtime": {
+          "TodoListApi.dll": {}
+        }
       }
     }
   },
@@ -3972,6 +3982,11 @@
       "hashPath": "xunit.runner.visualstudio.2.4.0.nupkg.sha512"
     },
     "DiaryApi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TodoListApi/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
