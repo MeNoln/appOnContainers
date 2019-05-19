@@ -25,6 +25,7 @@ namespace OcelotGateway
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddOcelot(Configuration);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -34,6 +35,7 @@ namespace OcelotGateway
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5000").AllowAnyOrigin());
             await app.UseOcelot();
             app.UseMvc();
         }

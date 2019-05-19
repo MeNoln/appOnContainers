@@ -16,9 +16,11 @@ namespace TodoListApi.Infrastructure
             this.db = db;
         }
 
-        public async Task<IEnumerable<TodoModel>> GetAllTodos() => await db.TodoModels.ToListAsync();
+        public async Task<IEnumerable<TodoModel>> GetAllTodos() => await db.TodoModels.Where(i => i.IsDone == false)
+                                                                            .OrderByDescending(i => i.Id).ToListAsync();
 
-        public async Task<IEnumerable<TodoModel>> GetAlreadyFinishedTodos() => await db.TodoModels.Where(i => i.IsDone == true).ToListAsync();
+        public async Task<IEnumerable<TodoModel>> GetAlreadyFinishedTodos() => await db.TodoModels.Where(i => i.IsDone == true)
+                                                                                        .OrderByDescending(i => i.Id).ToListAsync();
         
         public void Create(TodoModel model)
         {

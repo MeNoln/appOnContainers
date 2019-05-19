@@ -16,7 +16,7 @@ namespace DiaryApi.Infrastructure
             this.db = db;
         }
 
-        public async Task<IEnumerable<DiaryModel>> GetAllDiaryNotes() => await db.Diaries.ToListAsync();
+        public async Task<IEnumerable<DiaryModel>> GetAllDiaryNotes() => await db.Diaries.OrderByDescending(i => i.Id).ToListAsync();
 
         public async Task<DiaryModel> GetCurrentDiaryNote(int id) => await db.Diaries.FirstOrDefaultAsync(i => i.Id == id);
 
