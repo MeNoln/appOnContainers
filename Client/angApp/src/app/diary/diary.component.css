@@ -1,0 +1,48 @@
+/* Header */
+.headtext{
+    margin-bottom: 40px;
+}
+
+/* Add new note form */
+.daymarkinp{
+    max-width: 300px;
+}
+
+.diaryDescription{
+    max-width: 600px;
+    margin-left: 15px;
+    resize: none;
+}
+
+.sendBtn{
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+/* Diary notes */
+.diarynotes{
+    max-width: 600px;
+}
+
+.note{
+    background-color: rgb(148, 135, 140);
+    max-width: 600px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 20px;
+}
+
+#leftDate{
+    float: left;
+    font-weight: 600;
+}
+
+#markMiddleText{
+    text-align: center;
+    font-weight: 600;
+}
+
+#rightBtns{
+    float: right;
+}

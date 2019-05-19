@@ -1,3 +1,29 @@
-<p>
-  todo works!
-</p>
+<div class="headtext">
+  <h1>ToDo List</h1>
+</div>
+<div class="historyData">
+    <button class="btn btn-info" (click)="openTodoHistory()">ToDo`s History</button>
+    <div *ngIf="isOpen">
+        <div class="todos">
+            <div class="todonote" *ngFor="let todo of service.finishedList">
+              <button class="btn doneBtn"></button>
+              <span id="todoText">{{ todo.taskName }}</span> <hr>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="add">
+  <form class="form-inline" #form="ngForm" autocomplete="off" (submit)="resetForm(this.form)">
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="inputPassword2" class="sr-only">Todo Here</label>
+      <input type="text" name="taskName" [(ngModel)]="todo.taskName" class="form-control" id="inputPassword2" placeholder="Todo Here">
+    </div>
+    <button type="submit" class="btn btn-success mb-2" (click)="addNote(todo)">Add</button>
+  </form>
+</div>
+<div class="todos">
+  <div class="todonote" *ngFor="let todo of service.todoList">
+    <button class="btn doneBtn" (click)="updateNote(todo)"></button>
+    <span id="todoText">{{ todo.taskName }}</span> <hr>
+  </div>
+</div>

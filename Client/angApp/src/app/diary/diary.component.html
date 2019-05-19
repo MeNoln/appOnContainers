@@ -1,3 +1,26 @@
-<p>
-  diary works!
-</p>
+<div class="wrap">
+  <div class="headtext">
+    <h1>Your Personal Diary</h1>
+  </div>
+  <div class="diaryblock">
+    <div class="addfrom">
+      <form>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputDayMark" class="sr-only">Password</label>
+          <input class="form-control daymarkinp" id="inputDayMark" placeholder="Add Header for your Day">
+        </div>
+        <div class="form-group">
+          <textarea class="form-control diaryDescription" id="exampleFormControlTextarea1" rows="5" placeholder="Describe your Day"></textarea>
+          <button class="btn btn-success sendBtn">Add</button>
+        </div>
+      </form>
+    </div>
+    <div class="diarynotes">
+        <div class="note" *ngFor="let diary of service.diaryNotes">
+            <p id="markMiddleText"><span id="leftDate">{{diary.date}}</span>{{diary.dayMark}}<span id="rightBtns">btrbbtns</span></p>
+            <hr />
+            <p>{{diary.dayDescription}}</p>
+        </div>
+    </div>
+  </div>
+</div>

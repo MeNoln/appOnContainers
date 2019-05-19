@@ -1,0 +1,34 @@
+.headtext{
+    margin-bottom: 20px;
+}
+
+.historyData{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.add{
+    max-width: 600px;
+    margin-bottom: 50px;
+}
+
+#inputPassword2{
+    width: 350px;
+}
+
+.todos{
+    max-width: 600px;
+}
+
+.doneBtn{
+    width: 25px;
+    height: 30px;
+    border: 3px solid #ad5905;
+    border-radius: 50%;
+    background-color: #de9e5d;
+}
+
+#todoText{
+    margin-left: 20px;
+    font-size: 28px;
+}
