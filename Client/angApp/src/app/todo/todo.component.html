@@ -6,7 +6,7 @@
     <div *ngIf="isOpen">
         <div class="todos">
             <div class="todonote" *ngFor="let todo of service.finishedList">
-              <button class="btn doneBtn"></button>
+              <button class="btn delBtn" (click)="deleteNote(todo)"></button>
               <span id="todoText">{{ todo.taskName }}</span> <hr>
             </div>
           </div>

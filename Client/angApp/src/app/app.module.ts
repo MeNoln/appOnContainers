@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { DiaryComponent } from './diary/diary.component';
 import { TodoComponent } from './todo/todo.component';
 
+//Application routes
 const appRouts: Routes = [ { path: '', component: HomeComponent},
 { path: 'diary', component: DiaryComponent}, { path: 'todo', component: TodoComponent},];
 

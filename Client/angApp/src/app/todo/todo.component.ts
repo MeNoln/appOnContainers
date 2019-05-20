@@ -17,6 +17,7 @@ export class TodoComponent implements OnInit {
     this.refreshNotes();
   }
 
+  //Show all done Todo`s
   openTodoHistory(){
     this.isOpen = !this.isOpen;
     if(this.isOpen == true){
@@ -29,16 +30,24 @@ export class TodoComponent implements OnInit {
       form.form.reset();
   }
 
+  //Send GET request and recieve all unfinished Todo`s
   refreshNotes(){
     this.service.getTodoNotes();
   }
 
-  addNote(model: TodoModel, form: NgForm){
+  //Send POST request to server
+  addNote(model: TodoModel){
     this.service.createTodoNote(model).subscribe(res => { this.refreshNotes(); });
   }
 
+  //Send PUT request to server
   updateNote(model: TodoModel){
     this.service.updateTodo(model.id, model).subscribe(res => { this.refreshNotes(); });
+  }
+
+  //Send DELETE request to server
+  deleteNote(model: TodoModel){
+    this.service.deleteTodo(model.id).subscribe(res => { this.service.getFinishedTodoNotes(); } );
   }
 
 }

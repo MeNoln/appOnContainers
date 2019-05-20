@@ -6,9 +6,9 @@ import { TodoModel } from "../schema/todomodel";
   providedIn: 'root'
 })
 export class TododataService {
-  readonly connectionSting: string = "http://localhost:7000/todoapi/todo";
-  todoList: TodoModel[];
-  finishedList: TodoModel[];
+  readonly connectionSting: string = "http://localhost:7000/todoapi/todo"; //Server API URL
+  todoList: TodoModel[]; //List of unfinished Todo`s (isDone: false)
+  finishedList: TodoModel[]; //List of finished Todo`s (isDone: true)
   constructor(private http: HttpClient) { }
 
   getTodoNotes(){
@@ -31,5 +31,9 @@ export class TododataService {
   updateTodo(id:number, model: TodoModel){
     const todoModel = { id: model.id, taskName: model.taskName, isDone: true };
     return this.http.put(this.connectionSting + "/" + id, todoModel)
+  }
+
+  deleteTodo(id: number){
+    return this.http.delete(this.connectionSting + "/delete/" + id);
   }
 }

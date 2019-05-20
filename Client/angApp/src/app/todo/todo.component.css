@@ -28,6 +28,14 @@
     background-color: #de9e5d;
 }
 
+.delBtn{
+    width: 25px;
+    height: 30px;
+    border: 3px solid #a81111;
+    border-radius: 50%;
+    background-color: #b37b7b;
+}
+
 #todoText{
     margin-left: 20px;
     font-size: 28px;

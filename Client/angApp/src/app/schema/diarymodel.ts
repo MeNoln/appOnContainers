@@ -1,6 +1,6 @@
 export class DiaryModel {
     id: number;
-    date: any;
+    date: string;
     dayMark: string;
     dayDescription: string;
 }
