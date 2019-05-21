@@ -25,9 +25,9 @@ namespace OcelotGateway
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
-            services.AddOcelot(Configuration);
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(); //Cross Origin Resource Sharing for talking between the containers
+            services.AddOcelot(Configuration); //API Gateway
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2); //Not required option
         }
 
         public async void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -35,6 +35,7 @@ namespace OcelotGateway
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            //Settings for access from Client side
             app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5000").AllowAnyOrigin());
             await app.UseOcelot();
             app.UseMvc();

@@ -33,6 +33,20 @@
     margin: 20px;
 }
 
+.green-dayM{
+    border: 1px solid green;
+}
+.red-dayM{
+    border: 1px solid red;
+}
+
+.green-dayD{
+    border: 1px solid green;
+}
+.red-dayD{
+    border: 1px solid red;
+}
+
 #leftDate{
     float: left;
     font-weight: 600;

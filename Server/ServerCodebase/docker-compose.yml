@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-latest
+    container_name: menolns_sql
+    ports:
+      - "1434:1433"
+    environment:
+      - ACCEPT_EULA=Y 
+      - MSSQL_PID=Developer
+      - SA_PASSWORD=Qwerty1980!
+
+  diaryapi:
+    image: diaryapi:dev
+    build:
+      context: .
+      dockerfile: DiaryApi/Dockerfile
+    depends_on:
+      - sqlserver
+    ports:
+      - "7100:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  todolistapi:
+    image: todolistapi:dev
+    build:
+      context: .
+      dockerfile: TodoListApi/Dockerfile
+    depends_on:
+      - sqlserver
+    ports:
+      - "7200:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+
+  ocelotgateway:
+    image: ocelotgateway:dev
+    build:
+      context: .
+      dockerfile: OcelotGateway/Dockerfile
+    depends_on:
+      - sqlserver
+      - diaryapi
+      - todolistapi
+    ports:
+      - "7000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+

@@ -13,16 +13,17 @@ namespace DiaryApi.Controllers
     [ApiController]
     public class DiaryController : Controller
     {
-        private IRepo db;
+        private IRepo db; //Using database methods via DI
         public DiaryController(IRepo db)
         {
             this.db = db;
         }
 
+        //GET: api/diary
         [HttpGet, Route("")]
         public async Task<IEnumerable<DiaryModel>> GetAll() => await db.GetAllDiaryNotes();
 
-
+        //GET: api/diary/{id}
         [HttpGet, Route("{id}")]
         public async Task<IActionResult> GetCurrent(int id)
         {
@@ -33,6 +34,7 @@ namespace DiaryApi.Controllers
             return Json(model);
         }
 
+        //POST: api/diary/add
         [HttpPost, Route("add")]
         public IActionResult CreateDiaryNote(DiaryModel model)
         {
@@ -40,6 +42,7 @@ namespace DiaryApi.Controllers
             return Ok(StatusCodes.Status201Created);
         }
 
+        //PUT: api/diary/{id}
         [HttpPut("{id}")]
         public IActionResult UpdateDiary(int id, DiaryModel model)
         {
@@ -50,6 +53,7 @@ namespace DiaryApi.Controllers
             return NoContent();
         }
 
+        //DELETE: api/diary/delete/{id}
         [HttpDelete, Route("delete/{id}")]
         public IActionResult RemoveDiaryNote(int id)
         {

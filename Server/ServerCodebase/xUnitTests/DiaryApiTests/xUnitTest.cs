@@ -20,10 +20,10 @@ namespace xUnitTests.DiaryApiTests
         {
             return new List<DiaryModel>
             {
-                new DiaryModel{ Id = 1, Date = DateTime.Now, DayDescription = "Day One", DayMark = "One" },
-                new DiaryModel{ Id = 2, Date = DateTime.Now, DayDescription = "Day Two", DayMark = "Two" },
-                new DiaryModel{ Id = 3, Date = DateTime.Now, DayDescription = "Day Three", DayMark = "Three" },
-                new DiaryModel{ Id = 4, Date = DateTime.Now, DayDescription = "Day Four", DayMark = "Four" }
+                new DiaryModel{ Id = 1, Date = "23.02.2001", DayDescription = "Day One", DayMark = "One" },
+                new DiaryModel{ Id = 2, Date = "23.02.2001", DayDescription = "Day Two", DayMark = "Two" },
+                new DiaryModel{ Id = 3, Date = "23.02.2001", DayDescription = "Day Three", DayMark = "Three" },
+                new DiaryModel{ Id = 4, Date = "23.02.2001", DayDescription = "Day Four", DayMark = "Four" }
             };
         }
 
@@ -47,7 +47,7 @@ namespace xUnitTests.DiaryApiTests
         public void DiaryController_GetCurrentMethod_Returns_JSON_Object()
         {
             //Arrange
-            DiaryModel testObject = new DiaryModel { Id = 1, Date = DateTime.Now, DayMark = "good day",
+            DiaryModel testObject = new DiaryModel { Id = 1, Date = "23.02.2001", DayMark = "good day",
                                                       DayDescription = "I wrote some xUnit tests!" };
 
             mock.Setup(repo => repo.GetCurrentDiaryNote(testObject.Id)).Returns(Task.FromResult(testObject));
@@ -79,7 +79,7 @@ namespace xUnitTests.DiaryApiTests
         public void DiaryController_CreateDiaryNoteMethod_Returns_OkObject_Result()
         {
             //Arrange
-            DiaryModel testObject = new DiaryModel { Id = 1, Date = DateTime.Now, DayMark = "good", DayDescription = "text" };
+            DiaryModel testObject = new DiaryModel { Id = 1, Date = "23.02.2001", DayMark = "good", DayDescription = "text" };
 
             mock.Setup(repo => repo.Create(testObject));
             var controller = new DiaryController(mock.Object);
@@ -95,7 +95,7 @@ namespace xUnitTests.DiaryApiTests
         {
             //Arrange
             int id = 1;
-            DiaryModel testObject = new DiaryModel { Id = id, Date = DateTime.Now, DayMark = "good", DayDescription = "text" };
+            DiaryModel testObject = new DiaryModel { Id = id, Date = "23.02.2001", DayMark = "good", DayDescription = "text" };
 
             var controller = new DiaryController(mock.Object);
             //Act
@@ -110,7 +110,7 @@ namespace xUnitTests.DiaryApiTests
         {
             //Arrange
             int id = 1;
-            DiaryModel testObject = new DiaryModel { Id = 2, Date = DateTime.Now, DayMark = "good", DayDescription = "text" };
+            DiaryModel testObject = new DiaryModel { Id = 2, Date = "23.02.2001", DayMark = "good", DayDescription = "text" };
 
             var controller = new DiaryController(mock.Object);
             //Act

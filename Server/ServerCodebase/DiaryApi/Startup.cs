@@ -26,11 +26,15 @@ namespace DiaryApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(); //Cross Origin Resource Sharing for talking between the containers
+
+            //Data Access Context
             services.AddDbContext<DiaryAccessContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            //Dependency Injection
             services.AddTransient<IRepo, Repository>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2); //Not required option
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -38,8 +42,15 @@ namespace DiaryApi
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseCors("CorsPolicy"); //Using CORS Policy for default settings
             app.UseDefaultFiles();
-            app.UseMvc();
+            app.UseMvc(); //Not required option
+
+            //Auto Database Migration when running database container for the first time
+            using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                scope.ServiceProvider.GetService<DiaryAccessContext>().MigrateDB();
+            }
         }
     }
 }

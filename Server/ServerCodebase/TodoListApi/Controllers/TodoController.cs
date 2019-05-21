@@ -13,18 +13,21 @@ namespace TodoListApi.Controllers
     [ApiController]
     public class TodoController : ControllerBase
     {
-        private IRepo db;
+        private IRepo db; //Using database methods via DI
         public TodoController(IRepo db)
         {
             this.db = db;
         }
 
+        // GET: api/todo
         [HttpGet("")]
         public async Task<IEnumerable<TodoModel>> GetAll() => await db.GetAllTodos();
 
+        //GET: api/todo/done
         [HttpGet("done")]
         public async Task<IEnumerable<TodoModel>> GetAllDone() => await db.GetAlreadyFinishedTodos();
 
+        //POST: api/todo/add
         [HttpPost("add")]
         public IActionResult CreateTodo(TodoModel model)
         {
@@ -32,6 +35,7 @@ namespace TodoListApi.Controllers
             return Ok(StatusCodes.Status201Created);
         }
 
+        //PUT: api/todo/{id}
         [HttpPut("{id}")]
         public IActionResult UpdateTodo(int id, TodoModel model)
         {
@@ -42,6 +46,7 @@ namespace TodoListApi.Controllers
             return NoContent();
         }
 
+        //DELETE api/todo/{id}
         [HttpDelete("delete/{id}")]
         public IActionResult RemoveTodo(int id)
         {

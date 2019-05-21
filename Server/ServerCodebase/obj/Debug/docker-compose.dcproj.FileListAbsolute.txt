@@ -1,0 +1,9 @@
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\bin\Debug\DiaryApi.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\bin\Debug\OcelotGateway.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\bin\Debug\TodoListApi.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\bin\Debug\OcelotGateway.pdb
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\bin\Debug\DiaryApi.pdb
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\bin\Debug\TodoListApi.pdb
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\obj\Debug\docker-compose.dcprojAssemblyReference.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\obj\Debug\docker-compose.dcproj.CopyComplete
