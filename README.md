@@ -8,6 +8,7 @@ One friday evening, it was a rainy day, I was watching YouTube and found a video
 **Let`s start from little description of this project.**
 **Architecture schema:** <img src="img/appschema.png">
 **Client side. One Gateway. Simple microservices.**
+**And it's Crossplatform. Run wherever you want: Windows, Linux, macOs. .Net Core + Docker makes Magic**
 
 ## Tools for building this app:
 **For Client side:**
