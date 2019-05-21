@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\xUnitTests",
     "\\xUnitTests\\DiaryApiTests"
   ],
-  "SelectedNode": "\\xUnitTests",
+  "SelectedNode": "\\xUnitTests\\DiaryApiTests\\xUnitTest.cs",
   "PreviewInSolutionExplorer": false
 }
