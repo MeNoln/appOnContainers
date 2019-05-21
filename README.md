@@ -2,7 +2,7 @@
 As a tradition i choosed random name for this project.
 
 ## Why i decided to create this app?
-One friday evening, it was a rainy day, I was watching YouTube and found video on Microsoft Visual Studio channel called "Microservice Architecture using .Net Core and Docker". I opened it and was impressed by how cool it is. And here was the entry point.
+One friday evening, it was a rainy day, I was watching YouTube and found a video on Microsoft Visual Studio channel called "Microservice Architecture using .Net Core and Docker". I opened it and was impressed by how cool it is. And here was the entry point.
 
 ## About
 **Let`s start from little description of this project.**
@@ -19,7 +19,7 @@ One friday evening, it was a rainy day, I was watching YouTube and found video o
 
 I wanted to create a SPA, cuz i love them, it's awesome and also i didn't want to write AJAX code using JS. As for me TypeScript is the best tool for C# or Java developer. TS is clean, understandable and strong typed. I like it.
 
-Server side made using .Net core, because i`m using C# as my main programming language. And also Docker to implement Microservice Architecture.
+Server side made using .Net Core, because i`m using C# as my main programming language. And also Docker to implement Microservice Architecture.
 
 ## Experience
 I've got a lot of experience. I've learnt new framework: Angular, it's pretty easy to star working with it.
