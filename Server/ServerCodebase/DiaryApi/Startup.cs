@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.HealthChecks;
 
 namespace DiaryApi
 {
@@ -34,7 +36,16 @@ namespace DiaryApi
             //Dependency Injection
             services.AddTransient<IRepo, Repository>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2); //Not required option
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2); //MVC Pattern
+
+            services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "SwaggerUI", Version = "v1" }); }); //Swagger
+
+            //Sql HealthChecks
+            services.AddHealthChecks(checks => 
+            {
+                checks.WithDefaultCacheDuration(TimeSpan.FromSeconds(1));
+                checks.AddSqlCheck("DefaultConnection", Configuration.GetConnectionString("DefaultConnection"));
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -44,7 +55,11 @@ namespace DiaryApi
 
             app.UseCors("CorsPolicy"); //Using CORS Policy for default settings
             app.UseDefaultFiles();
-            app.UseMvc(); //Not required option
+            app.UseMvc(); //Default settings
+
+            //Setting Swagger up for testing Api`s from browser
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "DiaryApi - v1"); });
 
             //Auto Database Migration when running database container for the first time
             using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())

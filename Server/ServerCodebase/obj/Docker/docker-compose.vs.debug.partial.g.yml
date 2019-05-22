@@ -5,6 +5,9 @@ services:
     image: diaryapi:dev
     build:
       target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "DiaryApi"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
@@ -13,6 +16,9 @@ services:
       - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
       - C:\Users\PC\.nuget\packages\:/root/.nuget/packages:ro
       - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
@@ -24,6 +30,9 @@ services:
     image: ocelotgateway:dev
     build:
       target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "OcelotGateway"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
@@ -32,6 +41,9 @@ services:
       - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
       - C:\Users\PC\.nuget\packages\:/root/.nuget/packages:ro
       - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"
@@ -44,6 +56,9 @@ services:
     image: todolistapi:dev
     build:
       target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "TodoListApi"
     environment:
       - DOTNET_USE_POLLING_FILE_WATCHER=1
       - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages
@@ -52,6 +67,9 @@ services:
       - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
       - C:\Users\PC\.nuget\packages\:/root/.nuget/packages:ro
       - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+
     entrypoint: tail -f /dev/null
     labels:
       com.microsoft.visualstudio.debuggee.program: "dotnet"

@@ -18,5 +18,6 @@ COPY --from=publish /app .
 
 EXPOSE 7200/tcp
 ENV ASPNETCORE_URLS http://*:7200
+HEALTHCHECK --interval=30s --timeout=3s --retries=1 CMD curl --silent --fail http://localhost:7200/hc || exit 1
 
 ENTRYPOINT ["dotnet", "TodoListApi.dll"]

@@ -51,6 +51,10 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "Microsoft.AspNetCore.HealthChecks": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.AspNetCore.Razor.Design": {
               "suppressParent": "All",
               "target": "Package",
@@ -59,6 +63,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[2.2.4, )"
+            },
+            "Microsoft.Extensions.HealthChecks.SqlServer": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
@@ -77,6 +85,10 @@
             "Polly": {
               "target": "Package",
               "version": "[7.1.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[4.0.1, )"
             }
           },
           "imports": [
