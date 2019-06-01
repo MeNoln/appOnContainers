@@ -49,3 +49,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
 
+
+  identityapi:
+    image: identityapi:dev 
+    build:
+      context: .
+      dockerfile: IdentityApi/Dockerfile
+
