@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IdentityApi.Models;
+using IdentityApi.Services.EncodeUtil;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
@@ -18,24 +19,29 @@ namespace IdentityApi.Services
             db = database.GetCollection<User>("users");
         }
 
-        public Task RegisterUser(User model)
+        public async Task<User> RegisterUser(User model)
         {
-            throw new NotImplementedException();
+            await db.InsertOneAsync(model);
+            var addedUser = await AuthenticateUser(model);
+
+            return addedUser;
         }
 
-        public Task<User> AuthenticateUser(User model)
+        public async Task<User> AuthenticateUser(User model)
         {
-            throw new NotImplementedException();
+            var user = await db.Find<User>(i => i.Login == model.Login && i.Password == model.Password).FirstOrDefaultAsync();
+            user._id = CipherClass.Encipher(user._id);
+            return user;
         }
 
-        public Task<User> GetUserById(string _id)
+        public async Task<User> AuthenticateUser(string _id)
         {
-            throw new NotImplementedException();
+            return await db.Find<User>(i => i._id == _id).FirstOrDefaultAsync();
         }
 
-        public Task UpdateUserInfo(string _id, User model)
+        public async Task UpdateUserInfo(string _id, User model)
         {
-            throw new NotImplementedException();
+            await db.ReplaceOneAsync(i => i._id == _id, model);
         }
     }
 }
