@@ -23,6 +23,18 @@
       ],
       "UpstreamPathTemplate": "/todoapi/{catchAll}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{catchAll}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "identityapi",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/identapi/{catchAll}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     }
   ],
   "GlobalConfiguration": {
