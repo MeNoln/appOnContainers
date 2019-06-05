@@ -19,7 +19,7 @@ export class DiarydataService {
 
   addDiaryNote(model: DiaryModel){
     const diaryModel = { date: new Date().toLocaleString(), dayMark: model.dayMark, dayDescription: model.dayDescription };
-    return this.http.post(this.connectionSting + "/add", diaryModel)
+    return this.http.post(this.connectionSting + "/add", diaryModel);
   }
 
   updateDiaryNote(id: number, model: DiaryModel){

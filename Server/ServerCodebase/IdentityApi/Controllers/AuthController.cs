@@ -24,20 +24,15 @@ namespace IdentityApi.Controllers
         {
             var user = await db.RegisterUser(model);
 
-            Response.Cookies.Append("authCook", user._id, new CookieOptions { Expires = DateTime.Now.AddDays(2) });
-
             return Json(user);
         }
 
         [HttpGet, Route("log")]
-        public async Task<IActionResult> AuthenticateUserByModel(User model)
+        public async Task<IActionResult> AuthenticateUserByModel([FromQuery]User model)
         {
             var user = await db.AuthenticateUser(model);
             if (user == null)
-                return NotFound();
-
-            if(!Request.Cookies.ContainsKey("authCook"))
-                Response.Cookies.Append("authCook", user._id, new CookieOptions { Expires = DateTime.Now.AddDays(2) });
+                return Json(null);
 
             return Json(user);
         }

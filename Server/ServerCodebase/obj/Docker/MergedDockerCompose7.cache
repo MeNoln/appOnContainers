@@ -1,0 +1,65 @@
+services:
+  diaryapi:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: DiaryApi/Dockerfile
+    depends_on:
+    - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    image: diaryapi:dev
+    ports:
+    - published: 7100
+      target: 80
+  identityapi:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: IdentityApi/Dockerfile
+    depends_on:
+    - nosql.data
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    image: identityapi:dev
+    ports:
+    - published: 6000
+      target: 80
+  nosql.data:
+    container_name: mongodata
+    image: mongo
+  ocelotgateway:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: OcelotGateway/Dockerfile
+    depends_on:
+    - diaryapi
+    - sqlserver
+    - todolistapi
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    image: ocelotgateway:dev
+    ports:
+    - published: 7000
+      target: 80
+  sqlserver:
+    container_name: menolns_sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      SA_PASSWORD: Qwerty1980!
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+    - published: 1434
+      target: 1433
+  todolistapi:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: TodoListApi/Dockerfile
+    depends_on:
+    - sqlserver
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+    image: todolistapi:dev
+    ports:
+    - published: 7200
+      target: 80
+version: '3.4'

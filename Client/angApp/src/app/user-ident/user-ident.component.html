@@ -1,0 +1,45 @@
+<div class="row justify-content-center align-items-center">
+  <h1>Welcome Hero! To use this app Please Register or Sign In.</h1>
+  <div class="col-4">
+      <div class="card authForm" *ngIf="switchBtn">
+          <div class="card-body">
+              <h4>Sign In</h4>
+              <form #form="ngForm" autocomplete="off" (submit)="resetForm(this.form)">
+                  <div class="form-group">
+                      <input type="text" name="login" #login="ngModel" [(ngModel)]="user.login" class="form-control" placeholder="Login" required [class.green-dayM]="login.valid" [class.red-dayM]="login.invalid && login.touched">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Password" required [class.green-dayM]="password.valid" [class.red-dayM]="password.invalid && password.touched">
+                  </div>
+                  <button type="button" id="sendlogin" class="btn btn-success" (click)="authUser(user)">Sign In</button>
+              </form>
+            <hr>
+            <h5>If you don`t have an account please register!</h5>
+            <button type="button" id="sendlogin" class="btn btn-primary" (click)="switchForms()">Register</button>
+          </div>
+      </div>
+      <div class="card authForm" *ngIf="!switchBtn">
+          <div class="card-body">
+              <h4>Register</h4>
+              <form #form2="ngForm" autocomplete="off" (submit)="resetForm(this.form2)">
+                  <div class="form-group">
+                    <input type="text" name="login" #login="ngModel" [(ngModel)]="user.login" class="form-control" placeholder="Login" required [class.green-dayM]="login.valid" [class.red-dayM]="login.invalid && login.touched">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Password" required [class.green-dayM]="password.valid" [class.red-dayM]="password.invalid && password.touched">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="userName" #userName="ngModel" [(ngModel)]="user.userName" class="form-control" placeholder="Your Name" required [class.green-dayM]="userName.valid" [class.red-dayM]="userName.invalid && userName.touched">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="userAge" #userAge="ngModel" [(ngModel)]="user.userAge" class="form-control" placeholder="Your Age" required [class.green-dayM]="userAge.valid" [class.red-dayM]="userAge.invalid && userAge.touched">
+                  </div>
+                  <button type="button" id="sendlogin" class="btn btn-success" (click)="registerUser(user)">Register</button>
+              </form>
+            <hr>
+            <h5>If you already have an account please Sign In!</h5>
+            <button type="button" id="sendlogin" class="btn btn-primary" (click)="switchForms()">Sign In</button>
+          </div>
+      </div>
+  </div>
+</div>

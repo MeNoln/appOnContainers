@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
 import { DiarydataService } from "./schema/diarydata.service"
 import { TododataService } from "./schema/tododata.service"
+import { UserAuthService } from "./schema/user-auth.service";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,9 @@ import { LeftbarComponent } from './leftbar/leftbar.component';
 import { HomeComponent } from './home/home.component';
 import { DiaryComponent } from './diary/diary.component';
 import { TodoComponent } from './todo/todo.component';
+import { CookieService } from "ngx-cookie-service";
+import { UserIdentComponent } from './user-ident/user-ident.component';
+
 
 //Application routes
 const appRouts: Routes = [ { path: '', component: HomeComponent},
@@ -23,7 +27,8 @@ const appRouts: Routes = [ { path: '', component: HomeComponent},
     LeftbarComponent,
     HomeComponent,
     DiaryComponent,
-    TodoComponent
+    TodoComponent,
+    UserIdentComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,7 @@ const appRouts: Routes = [ { path: '', component: HomeComponent},
     HttpClientModule,
     FormsModule
   ],
-  providers: [DiarydataService, TododataService],
+  providers: [DiarydataService, TododataService, UserAuthService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

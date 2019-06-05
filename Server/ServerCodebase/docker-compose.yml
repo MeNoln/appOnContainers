@@ -11,6 +11,10 @@ services:
       - MSSQL_PID=Developer
       - SA_PASSWORD=Qwerty1980!
 
+  nosql.data:
+    image: mongo
+    container_name: mongodata
+
   diaryapi:
     image: diaryapi:dev
     build:
@@ -49,10 +53,15 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
 
-
   identityapi:
     image: identityapi:dev 
     build:
       context: .
       dockerfile: IdentityApi/Dockerfile
+    depends_on:
+      - nosql.data
+    ports:
+      - "6000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
 

@@ -1,0 +1,149 @@
+services:
+  diaryapi:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: DiaryApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: DiaryApi
+      target: base
+    depends_on:
+    - sqlserver
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: diaryapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/DiaryApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 7100
+      target: 80
+    volumes:
+    - C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\DiaryApi:/app:rw
+    - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\PC\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\PC\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\PC\.nuget\packages:/root/.nuget/packages:ro
+  identityapi:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: IdentityApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: IdentityApi
+      target: base
+    depends_on:
+    - nosql.data
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: identityapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/IdentityApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 6000
+      target: 80
+    volumes:
+    - C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\IdentityApi:/app:rw
+    - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\PC\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\PC\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\PC\.nuget\packages:/root/.nuget/packages:ro
+  nosql.data:
+    container_name: mongodb
+    image: mongo
+  ocelotgateway:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: OcelotGateway/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: OcelotGateway
+      target: base
+    depends_on:
+    - diaryapi
+    - sqlserver
+    - todolistapi
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: ocelotgateway:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/OcelotGateway.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 7000
+      target: 80
+    volumes:
+    - C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\OcelotGateway:/app:rw
+    - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\PC\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\PC\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\PC\.nuget\packages:/root/.nuget/packages:ro
+  sqlserver:
+    container_name: menolns_sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+      SA_PASSWORD: Qwerty1980!
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+    - published: 1434
+      target: 1433
+  todolistapi:
+    build:
+      context: C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase
+      dockerfile: TodoListApi/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: TodoListApi
+      target: base
+    depends_on:
+    - sqlserver
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: todolistapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  "bin/Debug/netcoreapp2.2/TodoListApi.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 7200
+      target: 80
+    volumes:
+    - C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\TodoListApi:/app:rw
+    - C:\Users\PC\vsdbg\vs2017u5:/remote_debugger:ro
+    - C:\Users\PC\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\PC\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\PC\.nuget\packages:/root/.nuget/packages:ro
+version: '3.4'

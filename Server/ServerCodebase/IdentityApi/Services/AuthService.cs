@@ -30,7 +30,8 @@ namespace IdentityApi.Services
         public async Task<User> AuthenticateUser(User model)
         {
             var user = await db.Find<User>(i => i.Login == model.Login && i.Password == model.Password).FirstOrDefaultAsync();
-            user._id = CipherClass.Encipher(user._id);
+            if(user != null)
+                user._id = CipherClass.Encipher(user._id);
             return user;
         }
 
