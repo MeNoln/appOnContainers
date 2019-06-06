@@ -14,7 +14,8 @@ namespace TodoListApi.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     TaskName = table.Column<string>(nullable: false),
-                    IsDone = table.Column<bool>(nullable: false)
+                    IsDone = table.Column<bool>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -37,6 +37,7 @@ namespace IdentityApi.Services
 
         public async Task<User> AuthenticateUser(string _id)
         {
+            _id = CipherClass.Decipher(_id);
             return await db.Find<User>(i => i._id == _id).FirstOrDefaultAsync();
         }
 

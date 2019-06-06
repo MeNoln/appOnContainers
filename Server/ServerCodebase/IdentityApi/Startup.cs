@@ -20,10 +20,11 @@ namespace IdentityApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
-            services.AddScoped<IAuthService, AuthService>();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(); //Cross Origin Resource Sharing for talking between the containers
+            services.AddScoped<IAuthService, AuthService>(); //Dependency Injection
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2); //Mvc framework
 
+            //Healthchecks for API
             services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy());
         }

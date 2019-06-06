@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { CookieService } from "ngx-cookie-service";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { User } from "./usermodel";
-import { TouchSequence } from 'selenium-webdriver';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +17,10 @@ export class UserAuthService {
 
   getCookieValue(){
     return this.cook.get("authCook");
+  }
+
+  deleteCookie(){
+    this.cook.delete("authCook");
   }
 
   registerNewUser(model: User){
@@ -38,5 +40,5 @@ export class UserAuthService {
   findUserById(_id: string){
     return this.http.get(this.connectionString + "/find/" + _id);
   }
-  
+
 }

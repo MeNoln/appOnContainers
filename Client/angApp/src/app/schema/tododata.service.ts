@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http' 
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from "ngx-cookie-service";
 import { TodoModel } from "../schema/todomodel";
 
 @Injectable({
@@ -9,27 +10,31 @@ export class TododataService {
   readonly connectionSting: string = "http://localhost:7000/todoapi/todo"; //Server API URL
   todoList: TodoModel[]; //List of unfinished Todo`s (isDone: false)
   finishedList: TodoModel[]; //List of finished Todo`s (isDone: true)
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cook: CookieService) { }
 
-  getTodoNotes(){
-    this.http.get(this.connectionSting)
+  getUserCookie(){
+    return this.cook.get("authCook");
+  }
+
+  getTodoNotes(cookieValue: string){
+    this.http.get(this.connectionSting + "/" + cookieValue)
     .toPromise()
     .then(res => this.todoList = res as TodoModel[]);
   }
 
-  getFinishedTodoNotes(){
-    this.http.get(this.connectionSting + "/done")
+  getFinishedTodoNotes(cookieValue: string){
+    this.http.get(this.connectionSting + "/done/" + cookieValue)
     .toPromise()
     .then(res => this.finishedList = res as TodoModel[]);
   }
 
-  createTodoNote(model: TodoModel){
-    const todoModel = { taskName: model.taskName, isDone: false};
+  createTodoNote(model: TodoModel, cookieValue: string){
+    const todoModel = { taskName: model.taskName, isDone: false, userId: cookieValue };
     return this.http.post(this.connectionSting + "/add", todoModel)
   }
 
-  updateTodo(id:number, model: TodoModel){
-    const todoModel = { id: model.id, taskName: model.taskName, isDone: true };
+  updateTodo(id:number, model: TodoModel, cookieValue: string){
+    const todoModel = { id: model.id, taskName: model.taskName, isDone: true, userId: cookieValue };
     return this.http.put(this.connectionSting + "/" + id, todoModel)
   }
 

@@ -3,4 +3,5 @@ export class DiaryModel {
     date: string;
     dayMark: string;
     dayDescription: string;
+    userId: string;
 }

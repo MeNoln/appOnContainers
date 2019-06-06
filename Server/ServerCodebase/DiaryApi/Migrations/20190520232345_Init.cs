@@ -15,7 +15,8 @@ namespace DiaryApi.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Date = table.Column<string>(nullable: true),
                     DayMark = table.Column<string>(nullable: false),
-                    DayDescription = table.Column<string>(nullable: false)
+                    DayDescription = table.Column<string>(nullable: false),
+                    UserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -5,6 +5,9 @@
                 <h5 id="head">App On Containers</h5>
             </li>
             <li>
+                <h5 id="userN">Welcome Back {{ user.userName }}</h5>
+            </li>
+            <li>
                 <a routerLink="" >Home</a>
             </li>
             <li>
@@ -13,6 +16,7 @@
             <li>
                 <a routerLink="/todo">ToDo List</a>
             </li>
+            <button class="btn quitBtn" (click)="this.quitFromApp()">Quit</button>
         </ul>
     </div>
 </div>

@@ -10,22 +10,24 @@ import { NgForm } from "@angular/forms"
 })
 export class DiaryComponent implements OnInit {
   diary: DiaryModel = new DiaryModel();
+  cookieValue: string;
   constructor(private service: DiarydataService) { }
 
   ngOnInit() {
+    this.cookieValue = this.service.getUserCookie();
     this.refreshNotes();
     this.resetForm();
   }
 
   //Send GET request to recieve data
   refreshNotes(){
-    this.service.getDiaryNotes();
+    this.service.getDiaryNotes(this.cookieValue);
   }
 
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
-    this.diary = { id: 0, date: "", dayMark: "", dayDescription: ""};
+    this.diary = { id: 0, date: "", dayMark: "", dayDescription: "", userId: ""};
   }
 
   //Fill form with picked model
@@ -43,12 +45,12 @@ export class DiaryComponent implements OnInit {
 
   //Send POST request to server
   addNote(model: DiaryModel){
-    this.service.addDiaryNote(model).subscribe(res => { this.refreshNotes(); });
+    this.service.addDiaryNote(model, this.cookieValue).subscribe(res => { this.refreshNotes(); });
   }
 
   //Send PUT request to server
   updateNote(model: DiaryModel){
-    this.service.updateDiaryNote(model.id, model).subscribe(res => { this.refreshNotes(); });
+    this.service.updateDiaryNote(model.id, model, this.cookieValue).subscribe(res => { this.refreshNotes(); });
   }
 
   //Send DELETE request to server

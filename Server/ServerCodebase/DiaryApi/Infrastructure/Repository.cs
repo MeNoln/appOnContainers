@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiaryApi.DataAccess;
 using DiaryApi.Models;
+using DiaryApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DiaryApi.Infrastructure
@@ -17,7 +18,11 @@ namespace DiaryApi.Infrastructure
         }
 
         //Get all diary notes
-        public async Task<IEnumerable<DiaryModel>> GetAllDiaryNotes() => await db.Diaries.OrderByDescending(i => i.Id).ToListAsync();
+        public async Task<IEnumerable<DiaryModel>> GetAllDiaryNotes(string _id)
+        {
+            _id = CipherClass.Decipher(_id);
+            return await db.Diaries.Where(i => i.UserId == _id).OrderByDescending(i => i.Id).ToListAsync();
+        }
 
         //Get current note(not using this method in client)
         public async Task<DiaryModel> GetCurrentDiaryNote(int id) => await db.Diaries.FirstOrDefaultAsync(i => i.Id == id);
@@ -25,6 +30,7 @@ namespace DiaryApi.Infrastructure
         //Create new note
         public void Create(DiaryModel model)
         {
+            model.UserId = CipherClass.Decipher(model.UserId);
             db.Diaries.Add(model);
             db.SaveChanges();
         }
@@ -32,6 +38,7 @@ namespace DiaryApi.Infrastructure
         //Update note
         public void Update(DiaryModel model)
         {
+            model.UserId = CipherClass.Decipher(model.UserId);
             db.Entry(model).State = EntityState.Modified;
             db.SaveChanges();
         }

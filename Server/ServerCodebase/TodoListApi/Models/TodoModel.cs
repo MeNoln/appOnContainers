@@ -12,5 +12,6 @@ namespace TodoListApi.Models
         [Required]
         public string TaskName { get; set; }
         public bool IsDone { get; set; }
+        public string UserId { get; set; }
     }
 }

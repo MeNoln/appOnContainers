@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace IdentityApi.Services.EncodeUtil
+﻿namespace IdentityApi.Services.EncodeUtil
 {
     public static class CipherClass
     {

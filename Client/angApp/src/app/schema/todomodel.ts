@@ -1,5 +1,6 @@
 export class TodoModel{
     id: number;
     taskName: string;
-    isDone:boolean;
+    isDone: boolean;
+    userId: string;
 }

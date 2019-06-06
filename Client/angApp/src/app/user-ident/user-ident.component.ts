@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserAuthService } from "../schema/user-auth.service";
 import { NgForm } from "@angular/forms";
 import { User } from "../schema/usermodel";
@@ -9,7 +9,7 @@ import { User } from "../schema/usermodel";
   styleUrls: ['./user-ident.component.css']
 })
 export class UserIdentComponent implements OnInit {
-  verifyCookie: boolean = false;
+  verifyCookies: boolean = false;
   switchBtn: boolean = true;
   user: User = new User();
 

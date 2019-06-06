@@ -15,45 +15,48 @@ namespace xUnitTests.TodoListApiTests
     {
         Mock<TodoListApi.Infrastructure.IRepo> mock = new Mock<TodoListApi.Infrastructure.IRepo>();
 
-        private List<TodoModel> GetTestDbData()
+        private List<TodoModel> GetTestDbData(string _id)
         {
-            return new List<TodoModel>
+            List<TodoModel> list = new List<TodoModel>
             {
-                new TodoModel{ Id = 1, TaskName = "One", IsDone = false },
-                new TodoModel{ Id = 2, TaskName = "Two", IsDone = false },
-                new TodoModel{ Id = 3, TaskName = "Three", IsDone = false },
-                new TodoModel{ Id = 4, TaskName = "Four", IsDone = true },
-                new TodoModel{ Id = 5, TaskName = "Fice", IsDone = true },
+                new TodoModel{ Id = 1, TaskName = "One", IsDone = false, UserId = "1ab" },
+                new TodoModel{ Id = 2, TaskName = "Two", IsDone = false, UserId = "1ab" },
+                new TodoModel{ Id = 3, TaskName = "Three", IsDone = false, UserId = "3ab" },
+                new TodoModel{ Id = 4, TaskName = "Four", IsDone = true, UserId = "4ab" },
+                new TodoModel{ Id = 5, TaskName = "Fice", IsDone = true, UserId = "4ab" },
             };
+            return list.Where(i => i.UserId == _id).ToList();
         }
 
         [Fact]
         public void TodoConteroller_GetAllMethod_Returns_AllTodoNotes_Result()
         {
+            string _id = "1ab";
             //Arrange
-            mock.Setup(repo => repo.GetAllTodos()).Returns(Task.FromResult(GetTestDbData() as IEnumerable<TodoModel>));
+            mock.Setup(repo => repo.GetAllTodos(_id)).Returns(Task.FromResult(GetTestDbData(_id) as IEnumerable<TodoModel>));
             var controller = new TodoController(mock.Object);
             //Act
-            var result = controller.GetAll();
+            var result = controller.GetAll(_id);
             //Assert
             var viewResult = Assert.IsType<Task<IEnumerable<TodoModel>>>(result);
             var model = Assert.IsAssignableFrom<IEnumerable<TodoModel>>(viewResult.Result);
-            Assert.Equal(GetTestDbData().Count, model.Count());
+            Assert.Equal(GetTestDbData(_id).Count, model.Count());
         }
 
         [Fact]
         public void TodoConteroller_GetAlreadyFinishedMethod_Returns_AllTodoNotes_Result()
         {
+            string _id = "4ab";
             //Arrange
-            mock.Setup(repo => repo.GetAlreadyFinishedTodos())
-                .Returns(Task.FromResult(GetTestDbData().Where(i => i.IsDone == true) as IEnumerable<TodoModel>));
+            mock.Setup(repo => repo.GetAlreadyFinishedTodos(_id))
+                .Returns(Task.FromResult(GetTestDbData(_id).Where(i => i.IsDone == true) as IEnumerable<TodoModel>));
             var controller = new TodoController(mock.Object);
             //Act
-            var result = controller.GetAllDone();
+            var result = controller.GetAllDone(_id);
             //Assert
             var viewResult = Assert.IsType<Task<IEnumerable<TodoModel>>>(result);
             var model = Assert.IsAssignableFrom<IEnumerable<TodoModel>>(viewResult.Result);
-            Assert.Equal(GetTestDbData().Where(i => i.IsDone == true).Count(), model.Count());
+            Assert.Equal(GetTestDbData(_id).Where(i => i.IsDone == true).Count(), model.Count());
         }
 
         [Fact]

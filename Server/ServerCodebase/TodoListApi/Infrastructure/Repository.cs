@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TodoListApi.DataAccess;
 using TodoListApi.Models;
+using TodoListApi.Services;
 
 namespace TodoListApi.Infrastructure
 {
@@ -17,15 +18,22 @@ namespace TodoListApi.Infrastructure
         }
 
         //Get all unfinished todo`s
-        public async Task<IEnumerable<TodoModel>> GetAllTodos() => await db.TodoModels.Where(i => i.IsDone == false)
-                                                                            .OrderByDescending(i => i.Id).ToListAsync();
+        public async Task<IEnumerable<TodoModel>> GetAllTodos(string _id)
+        {
+            _id = CipherClass.Decipher(_id);
+            return await db.TodoModels.Where(i => i.IsDone == false && i.UserId == _id).OrderByDescending(i => i.Id).ToListAsync();
+        }
 
         //Get all finished todo`s
-        public async Task<IEnumerable<TodoModel>> GetAlreadyFinishedTodos() => await db.TodoModels.Where(i => i.IsDone == true)
-                                                                                        .OrderByDescending(i => i.Id).ToListAsync();
+        public async Task<IEnumerable<TodoModel>> GetAlreadyFinishedTodos(string _id)
+        {
+            _id = CipherClass.Decipher(_id);
+            return await db.TodoModels.Where(i => i.IsDone == true && i.UserId == _id).OrderByDescending(i => i.Id).ToListAsync();
+        }
         //Create new todo
         public void Create(TodoModel model)
         {
+            model.UserId = CipherClass.Decipher(model.UserId);
             db.TodoModels.Add(model);
             db.SaveChanges();
         }
@@ -42,6 +50,7 @@ namespace TodoListApi.Infrastructure
         //Update current todo as finished and send it to history
         public void Update(TodoModel model)
         {
+            model.UserId = CipherClass.Decipher(model.UserId);
             db.Entry(model).State = EntityState.Modified;
             db.SaveChanges();
         }

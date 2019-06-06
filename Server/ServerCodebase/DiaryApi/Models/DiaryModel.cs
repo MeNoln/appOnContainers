@@ -14,5 +14,6 @@ namespace DiaryApi.Models
         public string DayMark { get; set; }
         [Required]
         public string DayDescription { get; set; }
+        public string UserId { get; set; }
     }
 }

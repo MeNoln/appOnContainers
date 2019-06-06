@@ -19,13 +19,13 @@ namespace TodoListApi.Controllers
             this.db = db;
         }
 
-        // GET: api/todo
-        [HttpGet("")]
-        public async Task<IEnumerable<TodoModel>> GetAll() => await db.GetAllTodos();
+        // GET: api/todo/_id
+        [HttpGet("{userId}")]
+        public async Task<IEnumerable<TodoModel>> GetAll(string userId) => await db.GetAllTodos(userId);
 
-        //GET: api/todo/done
-        [HttpGet("done")]
-        public async Task<IEnumerable<TodoModel>> GetAllDone() => await db.GetAlreadyFinishedTodos();
+        //GET: api/todo/done/_id
+        [HttpGet("done/{userId}")]
+        public async Task<IEnumerable<TodoModel>> GetAllDone(string userId) => await db.GetAlreadyFinishedTodos(userId);
 
         //POST: api/todo/add
         [HttpPost("add")]

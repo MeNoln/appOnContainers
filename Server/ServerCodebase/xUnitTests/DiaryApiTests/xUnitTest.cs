@@ -16,30 +16,31 @@ namespace xUnitTests.DiaryApiTests
         Mock<DiaryApi.Infrastructure.IRepo> mock = new Mock<DiaryApi.Infrastructure.IRepo>();
 
         //Test Database Data 
-        private List<DiaryModel> GetTestDbData()
+        private List<DiaryModel> GetTestDbData(string _id)
         {
-            return new List<DiaryModel>
+            List<DiaryModel> list =  new List<DiaryModel>
             {
-                new DiaryModel{ Id = 1, Date = "23.02.2001", DayDescription = "Day One", DayMark = "One" },
-                new DiaryModel{ Id = 2, Date = "23.02.2001", DayDescription = "Day Two", DayMark = "Two" },
-                new DiaryModel{ Id = 3, Date = "23.02.2001", DayDescription = "Day Three", DayMark = "Three" },
-                new DiaryModel{ Id = 4, Date = "23.02.2001", DayDescription = "Day Four", DayMark = "Four" }
+                new DiaryModel{ Id = 1, Date = "23.02.2001", DayDescription = "Day One", DayMark = "One", UserId = "1ab" },
+                new DiaryModel{ Id = 2, Date = "23.02.2001", DayDescription = "Day Two", DayMark = "Two", UserId = "1ab" },
+                new DiaryModel{ Id = 3, Date = "23.02.2001", DayDescription = "Day Three", DayMark = "Three", UserId = "2ab" },
+                new DiaryModel{ Id = 4, Date = "23.02.2001", DayDescription = "Day Four", DayMark = "Four", UserId = "2ab" }
             };
+            return list.Where(i => i.UserId == _id).ToList();
         }
 
         [Fact]
         public void DiaryController_GetAllMethod_Returns_AllData_From_Table()
         {
             //Arrange
-            
-            mock.Setup(repo => repo.GetAllDiaryNotes()).Returns(Task.FromResult(GetTestDbData() as IEnumerable<DiaryModel>));
+            string _id = "1ab";
+            mock.Setup(repo => repo.GetAllDiaryNotes(_id)).Returns(Task.FromResult(GetTestDbData(_id) as IEnumerable<DiaryModel>));
             var controller = new DiaryController(mock.Object);
             //Act
-            var result = controller.GetAll();
+            var result = controller.GetAll(_id);
             //Assert
             var viewResult = Assert.IsType<Task<IEnumerable<DiaryModel>>>(result);
             var model = Assert.IsAssignableFrom<IEnumerable<DiaryModel>>(viewResult.Result);
-            Assert.Equal(GetTestDbData().Count, model.Count());
+            Assert.Equal(GetTestDbData(_id).Count, model.Count());
             
         }
 

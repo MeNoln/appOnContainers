@@ -19,12 +19,12 @@ namespace DiaryApi.Controllers
             this.db = db;
         }
 
-        //GET: api/diary
-        [HttpGet, Route("")]
-        public async Task<IEnumerable<DiaryModel>> GetAll() => await db.GetAllDiaryNotes();
+        //GET: api/diary/userId
+        [HttpGet, Route("{userId}")]
+        public async Task<IEnumerable<DiaryModel>> GetAll(string userId) => await db.GetAllDiaryNotes(userId);
 
-        //GET: api/diary/{id}
-        [HttpGet, Route("{id}")]
+        //GET: api/diary/cur/{id}
+        [HttpGet, Route("cur/{id}")]
         public async Task<IActionResult> GetCurrent(int id)
         {
             var model = await db.GetCurrentDiaryNote(id);

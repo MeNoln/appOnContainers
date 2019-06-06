@@ -29,6 +29,9 @@ namespace TodoListApi.Migrations
                     b.Property<string>("TaskName")
                         .IsRequired();
 
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
                     b.HasKey("Id");
 
                     b.ToTable("TodoTable");

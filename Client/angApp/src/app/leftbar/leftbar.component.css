@@ -15,6 +15,11 @@
     padding-top: 20px;
 }
 
+#userN{
+    color: coral;
+    font-size: 18px;
+}
+
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -80,6 +85,14 @@
 .sidebar-nav > .sidebar-brand a:hover {
     color: #fff;
     background: none;
+}
+
+.quitBtn{
+    position: fixed;
+    bottom: 10px;
+    margin-left: 10px;
+    background-color: #141414;
+    color: grey;
 }
 
 @media(min-width:768px) {

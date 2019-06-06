@@ -32,6 +32,9 @@ namespace DiaryApi.Migrations
                     b.Property<string>("DayMark")
                         .IsRequired();
 
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
                     b.HasKey("Id");
 
                     b.ToTable("Diaries");

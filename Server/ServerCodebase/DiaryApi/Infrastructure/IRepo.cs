@@ -8,7 +8,7 @@ namespace DiaryApi.Infrastructure
 {
     public interface IRepo
     {
-        Task<IEnumerable<DiaryModel>> GetAllDiaryNotes();
+        Task<IEnumerable<DiaryModel>> GetAllDiaryNotes(string _id);
         Task<DiaryModel> GetCurrentDiaryNote(int id);
         void Create(DiaryModel model);
         void Delete(int id);
