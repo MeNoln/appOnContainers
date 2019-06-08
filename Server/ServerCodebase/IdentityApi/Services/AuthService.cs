@@ -21,6 +21,10 @@ namespace IdentityApi.Services
 
         public async Task<User> RegisterUser(User model)
         {
+            var existsUser = await db.Find<User>(i => i.Login == model.Login).FirstOrDefaultAsync();
+            if (existsUser != null)
+                return new User { UserAge = -1};
+
             await db.InsertOneAsync(model);
             var addedUser = await AuthenticateUser(model);
 

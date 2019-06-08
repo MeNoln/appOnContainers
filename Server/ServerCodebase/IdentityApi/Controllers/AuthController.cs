@@ -23,7 +23,8 @@ namespace IdentityApi.Controllers
         public async Task<IActionResult> Register(User model)
         {
             var user = await db.RegisterUser(model);
-            Response.Cookies.Append("authCook", user._id, new CookieOptions { Expires = DateTime.Now.AddDays(1) });
+            if (user.UserAge == -1)
+                return Json("exist");
 
             return Json(user);
         }
@@ -34,9 +35,6 @@ namespace IdentityApi.Controllers
             var user = await db.AuthenticateUser(model);
             if (user == null)
                 return Json(null);
-
-            if (!Request.Cookies.ContainsKey("authCook"))
-                Response.Cookies.Append("authCook", user._id, new CookieOptions { Expires = DateTime.Now.AddDays(1)});
 
             return Json(user);
         }
