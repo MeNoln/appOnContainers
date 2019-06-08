@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DiaryApi\DiaryApi.csproj" />
+    <ProjectReference Include="..\IdentityApi\IdentityApi.csproj" />
     <ProjectReference Include="..\TodoListApi\TodoListApi.csproj" />
   </ItemGroup>
 

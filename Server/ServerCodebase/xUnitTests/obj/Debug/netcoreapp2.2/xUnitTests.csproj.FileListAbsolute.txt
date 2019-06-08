@@ -17,3 +17,5 @@ C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\xUnitT
 C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\xUnitTests\obj\Debug\netcoreapp2.2\xUnitTests.csproj.CopyComplete
 C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\xUnitTests\bin\Debug\netcoreapp2.2\TodoListApi.dll
 C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\xUnitTests\bin\Debug\netcoreapp2.2\TodoListApi.pdb
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\xUnitTests\bin\Debug\netcoreapp2.2\IdentityApi.dll
+C:\Users\PC\Desktop\appOnContainers\appOnContainers\Server\ServerCodebase\xUnitTests\bin\Debug\netcoreapp2.2\IdentityApi.pdb
