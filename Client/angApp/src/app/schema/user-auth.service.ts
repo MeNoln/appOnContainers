@@ -25,7 +25,15 @@ export class UserAuthService {
 
   registerNewUser(model: User){
     return this.http.post(this.connectionString + "/reg", model)
-    .subscribe(res => {this.user = res as User; if(res != null) this.cook.set("authCook", this.user._id)});
+    .subscribe(res => {
+      if(res == "exist"){
+        this.user = res as User;
+      }
+      else{
+        this.user = res as User;
+        this.cook.set("authCook", this.user._id);
+      };
+    });
   }
 
   authUser(model: User){

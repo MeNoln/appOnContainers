@@ -15,11 +15,12 @@ import { DiaryComponent } from './diary/diary.component';
 import { TodoComponent } from './todo/todo.component';
 import { CookieService } from "ngx-cookie-service";
 import { UserIdentComponent } from './user-ident/user-ident.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 
 //Application routes
-const appRouts: Routes = [ { path: '', component: HomeComponent},
-{ path: 'diary', component: DiaryComponent}, { path: 'todo', component: TodoComponent},];
+const appRouts: Routes = [ { path: '', component: HomeComponent}, { path: 'profile', component: UserprofileComponent},
+{ path: 'diary', component: DiaryComponent}, { path: 'todo', component: TodoComponent}];
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ const appRouts: Routes = [ { path: '', component: HomeComponent},
     DiaryComponent,
     TodoComponent,
     UserIdentComponent,
+    UserprofileComponent,
   ],
   imports: [
     BrowserModule,

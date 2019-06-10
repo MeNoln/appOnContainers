@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserAuthService } from "../schema/user-auth.service";
 import { NgForm } from "@angular/forms";
 import { User } from "../schema/usermodel";
@@ -11,6 +11,7 @@ import { User } from "../schema/usermodel";
 export class UserIdentComponent implements OnInit {
   verifyCookies: boolean = false;
   switchBtn: boolean = true;
+  existUserMessage: string;
   user: User = new User();
 
   constructor(private service: UserAuthService) { }
@@ -27,6 +28,7 @@ export class UserIdentComponent implements OnInit {
     if (form != null)
       form.form.reset();
     this.user = { _id: "",login: "", password: "", userName: "", userAge: null };
+    this.existUserMessage = "";
   }
 
   registerUser(model: User){
