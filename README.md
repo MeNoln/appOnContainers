@@ -17,8 +17,12 @@ One friday evening, it was a rainy day, I was watching YouTube and found a video
  **For Server side:**
   * .Net Core
   * Docker
+  
+**Database:**
+  * MS SQL
+  * MongoDB + GridFS
 
-I wanted to create a SPA, cuz i love them, it's awesome and also i didn't want to write AJAX code using JS. As for me TypeScript is the best tool for C# or Java developer. TS is clean, understandable and strong typed. I like it.
+I wanted to create a SPA, cuz i love them, it's awesome and also i don't want to write AJAX code using JS. As for me TypeScript is the best tool for C# or Java developer. TS is clean, understandable and strong typed. I like it.
 
 Server side made by using .Net Core, because C# is my main programming language. And also Docker to implement Microservice Architecture.
 
