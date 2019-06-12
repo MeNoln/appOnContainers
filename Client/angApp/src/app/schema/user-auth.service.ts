@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from "ngx-cookie-service";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { User } from "./usermodel";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +50,11 @@ export class UserAuthService {
     return this.http.get(this.connectionString + "/find/" + _id);
   }
 
+  getUserImageFromServer(id: string): Observable<Blob>{
+    return this.http.get(this.connectionString + "/img/" + id, { responseType: "blob" });
+  }
+
+  sendImage(data: FormData){
+    return this.http.post(this.connectionString + "/addimg", data, { responseType: "blob" });
+  }
 }

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "5d819df2af9d8da5ec450d04213d449057884711"
+    "signature": "1f2611e8e3188c6a626b9c85f496bd193b315327"
   },
   "compilationOptions": {
     "defines": [
@@ -31,7 +31,8 @@
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.7.9",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
-          "MongoDB.Driver": "2.8.1"
+          "MongoDB.Driver": "2.8.1",
+          "MongoDB.Driver.GridFS": "2.8.1"
         },
         "runtime": {
           "IdentityApi.dll": {}
@@ -365,6 +366,23 @@
         },
         "compile": {
           "lib/netstandard1.5/MongoDB.Driver.Core.dll": {}
+        }
+      },
+      "MongoDB.Driver.GridFS/2.8.1": {
+        "dependencies": {
+          "MongoDB.Bson": "2.8.1",
+          "MongoDB.Driver": "2.8.1",
+          "MongoDB.Driver.Core": "2.8.1",
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {
+            "assemblyVersion": "2.8.1.0",
+            "fileVersion": "2.8.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.5/MongoDB.Driver.GridFS.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -4128,6 +4146,13 @@
       "sha512": "sha512-uyVhvAtURsS5jN3O8LexaAe6zNd8luDYjWZmuhI8tG+TMEsWTPlpWThgPZsX3gyib3Z/a8XSj/dTTATfv4RcuA==",
       "path": "mongodb.driver.core/2.8.1",
       "hashPath": "mongodb.driver.core.2.8.1.nupkg.sha512"
+    },
+    "MongoDB.Driver.GridFS/2.8.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hO1AQcMJuwFGADNmq/X57Vyn2qMUab6iocCffz7hPYO13X78a4j4/joqXOrteS8YRiRGgMbpZ69242LcjH8wWQ==",
+      "path": "mongodb.driver.gridfs/2.8.1",
+      "hashPath": "mongodb.driver.gridfs.2.8.1.nupkg.sha512"
     },
     "NuGet.Frameworks/4.7.0": {
       "type": "package",

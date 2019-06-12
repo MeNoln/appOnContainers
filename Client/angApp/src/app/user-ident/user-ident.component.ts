@@ -27,7 +27,7 @@ export class UserIdentComponent implements OnInit {
   resetForm(form?: NgForm) {
     if (form != null)
       form.form.reset();
-    this.user = { _id: "",login: "", password: "", userName: "", userAge: null };
+    this.user = { _id: "",login: "", password: "", userName: "", userAge: null, imageId: "" };
     this.existUserMessage = "";
   }
 

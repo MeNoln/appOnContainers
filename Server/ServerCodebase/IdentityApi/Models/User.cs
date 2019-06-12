@@ -20,5 +20,7 @@ namespace IdentityApi.Models
         public string UserName { get; set; }
         [BsonElement("UserAge")]
         public int UserAge { get; set; }
+        [BsonElement("ImageId")]
+        public string ImageId { get; set; }
     }
 }
