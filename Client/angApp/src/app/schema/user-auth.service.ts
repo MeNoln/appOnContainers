@@ -24,6 +24,7 @@ export class UserAuthService {
     this.cook.delete("authCook");
   }
 
+  //Registers new user and saving info to user variable
   registerNewUser(model: User){
     return this.http.post(this.connectionString + "/reg", model)
     .subscribe(res => {
@@ -37,6 +38,7 @@ export class UserAuthService {
     });
   }
 
+  //Authenticate user
   authUser(model: User){
     let params: HttpParams = new HttpParams()
       .set("Login", model.login)
@@ -46,14 +48,22 @@ export class UserAuthService {
     .subscribe(res => {this.user = res as User; if(res != null) this.cook.set("authCook", this.user._id)});
   }
 
+  //Find user by Id from cookie
   findUserById(_id: string){
     return this.http.get(this.connectionString + "/find/" + _id);
   }
 
+  //Get Users profile image in blob type
   getUserImageFromServer(id: string): Observable<Blob>{
     return this.http.get(this.connectionString + "/img/" + id, { responseType: "blob" });
   }
 
+  //Updates user stats
+  updateUser(model: User){
+    return this.http.put(this.connectionString + "/update", model);
+  }
+
+  //Send uploaded by user image
   sendImage(data: FormData){
     return this.http.post(this.connectionString + "/addimg", data, { responseType: "blob" });
   }

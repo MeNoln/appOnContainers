@@ -1,14 +1,9 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 using Moq;
-using System.Collections.Generic;
-using System.Text;
 using IdentityApi.Models;
-using System.Linq;
 using System.Threading.Tasks;
 using IdentityApi.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 
 namespace xUnitTests.IdentityApiTests
 {
@@ -70,10 +65,10 @@ namespace xUnitTests.IdentityApiTests
             //Arrange
             User model = new User { _id = "12abc", Login = "testLog", Password = "TestPass", UserName = "UserTest", UserAge = 10 };
 
-            mock.Setup(repo => repo.AuthenticateUser(model._id)).Returns(Task.FromResult(model));
+            mock.Setup(repo => repo.FindUserById(model._id)).Returns(Task.FromResult(model));
             var controller = new AuthController(mock.Object);
             //Act
-            var result = controller.FindUserById(model._id);
+            var result = controller.FindUser(model._id);
             //Assert
             var viewResult = Assert.IsType<Task<IActionResult>>(result);
             var modelResult = Assert.IsAssignableFrom<JsonResult>(viewResult.Result);
@@ -86,13 +81,52 @@ namespace xUnitTests.IdentityApiTests
             //Arrange
             string _id = "123qwe";
 
-            mock.Setup(repo => repo.AuthenticateUser(_id)).Returns(Task.FromResult(null as User));
+            mock.Setup(repo => repo.FindUserById(_id)).Returns(Task.FromResult(null as User));
             var controller = new AuthController(mock.Object);
             //Act
-            var result = controller.FindUserById(_id);
+            var result = controller.FindUser(_id);
             //Assert
             var viewResult = Assert.IsType<Task<IActionResult>>(result);
             var modelResult = Assert.IsAssignableFrom<NotFoundResult>(viewResult.Result);
+        }
+
+        [Fact]
+        public void AuthController_UpdateInfodMethod_Returns_NotFoundResult()
+        {
+            //Arrange
+            User oldModel = new User { _id = "12abc", Login = "testLog", Password = "TestPass", UserName = "UserTest", UserAge = 10 };
+            
+            mock.Setup(repo => repo.UpdateUserInfo(oldModel)).Returns(Task.FromResult(null as User));
+            var controller = new AuthController(mock.Object);
+            //Act
+            var result = controller.UpdateInfo(oldModel);
+            //Assert
+            var viewResult = Assert.IsType<Task<IActionResult>>(result);
+            var modelResult = Assert.IsAssignableFrom<NotFoundResult>(viewResult.Result);
+        }
+
+        [Fact]
+        public void AuthController_UpdateInfodMethod_Returns_JsonObject()
+        {
+            //Arrange
+            User oldModel = new User { _id = "12abc", Login = "testLog", Password = "TestPass", UserName = "UserTest", UserAge = 10 };
+            User updatedModel = new User
+            {
+                _id = "12update",
+                Login = "testLogUpdated",
+                Password = "TestPass",
+                UserName = "UserTestUpdated",
+                UserAge = 11
+            };
+
+            mock.Setup(repo => repo.UpdateUserInfo(oldModel)).Returns(Task.FromResult(updatedModel));
+            var controller = new AuthController(mock.Object);
+            //Act
+            var result = controller.UpdateInfo(oldModel);
+            //Assert
+            var viewResult = Assert.IsType<Task<IActionResult>>(result);
+            var modelResult = Assert.IsAssignableFrom<JsonResult>(viewResult.Result);
+            Assert.Equal(updatedModel, modelResult.Value);
         }
     }
 }

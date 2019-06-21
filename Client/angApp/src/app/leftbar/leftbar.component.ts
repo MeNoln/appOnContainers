@@ -8,18 +8,11 @@ import { User } from "../schema/usermodel";
   styleUrls: ['./leftbar.component.css']
 })
 export class LeftbarComponent implements OnInit{
-  user: User = new User();
   cookieValue: string;
 
   constructor(private service: UserAuthService){}
 
   ngOnInit(){
-    this.getCurrentUser();
-  }
-
-  getCurrentUser(){
-    this.cookieValue = this.service.getCookieValue();
-    this.service.findUserById(this.cookieValue).subscribe(res => this.user = res as User);
   }
 
   quitFromApp(){

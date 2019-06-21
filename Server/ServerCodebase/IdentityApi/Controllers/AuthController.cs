@@ -23,6 +23,7 @@ namespace IdentityApi.Controllers
         [HttpPost, Route("reg")]
         public async Task<IActionResult> Register(User model)
         {
+            //If user entered already exists login return message
             var user = await db.RegisterUser(model);
             if (user.UserAge == -1)
                 return Json("exist");
@@ -46,6 +47,17 @@ namespace IdentityApi.Controllers
         public async Task<IActionResult> FindUser(string _id)
         {
             var user = await db.FindUserById(_id);
+            if (user == null)
+                return NotFound();
+
+            return Json(user);
+        }
+
+        //PUT: api/auth/update
+        [HttpPut, Route("update")]
+        public async Task<IActionResult> UpdateInfo(User model)
+        {
+            var user = await db.UpdateUserInfo(model);
             if (user == null)
                 return NotFound();
 

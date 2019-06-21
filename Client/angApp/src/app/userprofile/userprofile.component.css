@@ -18,3 +18,12 @@
 #log{
     font-size: 24px;
 }
+
+.updateInfoForm{
+    margin-left: 30px;
+    margin-bottom: 30px; 
+}
+
+.changebtn{
+    margin-left: 30px;
+}
